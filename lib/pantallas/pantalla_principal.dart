@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../modelo/obtener_palabras.dart';
+import '../components/obtener_palabras.dart';
 
 class PantallaPrincipal extends StatefulWidget {
   const PantallaPrincipal({Key? key}) : super(key: key);
