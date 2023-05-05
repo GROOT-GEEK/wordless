@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     // initialize the array
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Plbreo',
+      title: 'WORLDLE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
