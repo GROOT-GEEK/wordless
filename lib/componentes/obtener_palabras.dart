@@ -14,9 +14,9 @@ enum Filenum {
 
 class ObtenerPalabras {
 
-  static Future<String> obtenerPalabra(Filenum p) async{
+  static Future<String> obtenerPalabra(int  length) async{
     Random random = Random();
-    String palabras = await _cargaFichero(p);
+    String palabras = await _cargaFichero(length);
     var lista = palabras.split('\r\n');
     int randomNumber = random.nextInt(lista.length);
     return _quitarTildes(lista[randomNumber]);
@@ -31,7 +31,15 @@ class ObtenerPalabras {
     return src;
   }
 
-  static Future<String> _cargaFichero(Filenum p) async {
+  static Future<String> _cargaFichero(int  length) async {
+    Filenum p;
+    if(length == 4){
+      p=Filenum.cuatro;
+    }else if (length == 5){
+      p=Filenum.cinco;
+    }else{
+      p=Filenum.seis;
+    }
     return await rootBundle.loadString('assets/${p.path}');
   }
 }

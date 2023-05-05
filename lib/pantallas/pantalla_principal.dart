@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../componentes/obtener_palabras.dart';
+import '../componentes/home.dart';
 
 class PantallaPrincipal extends StatefulWidget {
   const PantallaPrincipal({Key? key}) : super(key: key);
+
+  static const String claveLongitud = 'longitud';
+  static const String claveDificultad = 'dificultad';
 
   @override
   State<PantallaPrincipal> createState() => _PantallaPrincipalState();
@@ -18,8 +21,7 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   final double dificultadMaxima = 8.0;
   final double longitudMinima = 4.0;
   final double longitudMaxima = 6.0;
-  final String claveLongitud = 'longitud';
-  final String claveDificultad = 'dificultad';
+
 
   @override
   void initState(){
@@ -29,15 +31,15 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
 
   Future<void> guardarPreferencias( ) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setDouble(claveDificultad, _valorDificultad);
-    prefs.setDouble(claveLongitud, _valorLongitud);
+    prefs.setDouble(PantallaPrincipal.claveDificultad, _valorDificultad);
+    prefs.setDouble(PantallaPrincipal.claveLongitud, _valorLongitud);
   }
 
   Future<void> cargarPreferencias( ) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _valorDificultad = prefs.getDouble(claveDificultad) ?? 4.0;
-      _valorLongitud = prefs.getDouble(claveLongitud) ?? 4.0;
+      _valorDificultad = prefs.getDouble(PantallaPrincipal.claveDificultad) ?? 4.0;
+      _valorLongitud = prefs.getDouble(PantallaPrincipal.claveLongitud) ?? 4.0;
     });
   }
 
@@ -134,7 +136,10 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
                   iconSize: 80,
                   onPressed: () async {
                     guardarPreferencias();
-                    print(await ObtenerPalabras.obtenerPalabra(Filenum.cinco));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const MyHomePage(title: 'WORDLE',)));
                   }, // pasar de pantalla
                 ),
               ),

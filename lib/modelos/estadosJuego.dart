@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
+import 'package:wordless/componentes/obtener_palabras.dart';
 
+import '../pantallas/pantalla_principal.dart';
 import 'letter.dart';
 import 'db.dart';
 
@@ -9,11 +12,11 @@ Database db = Database();
 
 class GameState extends ChangeNotifier {
   GameState() {
-    word = "Juego";
+    cargarPreferencias();
   }
 
-  static const int tries = 6;
-  late String word;
+  static late int tries = 4;
+  late String word ="";
 
   List<String> guesses = [];
   String currentGuess = "";
@@ -25,6 +28,15 @@ class GameState extends ChangeNotifier {
   Set<String> events = <String>{};
   List<String> messages = [];
   bool isAnimating = false;
+
+
+  Future<void> cargarPreferencias( ) async {
+    final prefs = await SharedPreferences.getInstance();
+    tries = (prefs.getDouble(PantallaPrincipal.claveDificultad) ?? 4.0).floor() ;
+    var length = prefs.getDouble(PantallaPrincipal.claveLongitud) ?? 4.0;
+    word = await ObtenerPalabras.obtenerPalabra(length.floor());
+    notifyListeners();
+  }
 
   List<LetterState> validateWord(String guess) {
     var g = guess.split('').toList();
@@ -68,7 +80,7 @@ class GameState extends ChangeNotifier {
   }
 
   exists(word) {
-    return "juego"; //validar si el diccionario contiene la palabra
+    return true; //validar si el diccionario contiene la palabra
   }
 
   clearEvent(String event) {
