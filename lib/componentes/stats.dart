@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../models/db.dart';
+import '../modelos/db.dart';
 
 Widget getGuessStat(int row, int val, int max) {
   var perc = val / max;

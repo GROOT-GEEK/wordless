@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
-import 'package:wordless/components/qwerty.dart';
-import 'package:wordless/components/stats.dart';
+import 'package:wordless/componentes/qwerty.dart';
+import 'package:wordless/componentes/stats.dart';
 
-import '../models/estadosJuego.dart';
+import '../modelos/estadosJuego.dart';
 import 'tablero.dart';
 import 'instrucciones.dart';
 

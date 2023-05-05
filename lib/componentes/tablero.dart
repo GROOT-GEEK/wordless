@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/estadosJuego.dart';
-import '../models/letter.dart';
+import '../modelos/estadosJuego.dart';
+import '../modelos/letter.dart';
 import 'animacionFilas.dart';
 
 class Board extends StatelessWidget {

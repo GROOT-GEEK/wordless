@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/letter.dart';
+import '../modelos/letter.dart';
 import 'package:flip_card/flip_card.dart';
 
 class AnimacionCeldas extends StatefulWidget {

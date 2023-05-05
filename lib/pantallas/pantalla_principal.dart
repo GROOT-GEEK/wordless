@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../components/obtener_palabras.dart';
+import '../componentes/obtener_palabras.dart';
 
 class PantallaPrincipal extends StatefulWidget {
   const PantallaPrincipal({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class PantallaPrincipal extends StatefulWidget {
 class _PantallaPrincipalState extends State<PantallaPrincipal> {
   double _valorDificultad =0 ; //Cargar de archivo de configuracion
   double _valorLongitud=0 ; //Cargar de archivo de configuracion
-  final double dificultadMinima = 4.0;
+  final double dificultadMinima = 5.0;
   final double dificultadMaxima = 8.0;
   final double longitudMinima = 4.0;
   final double longitudMaxima = 6.0;
@@ -25,7 +25,6 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   void initState(){
     super.initState();
     cargarPreferencias();
-
   }
 
   Future<void> guardarPreferencias( ) async {
@@ -53,7 +52,7 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
               Text('WORDLE',
                 textScaleFactor: 4.0,
                 style: GoogleFonts.lilitaOne(
-                  textStyle: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold)
+                    textStyle: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold)
                 ),
               ),
               const SizedBox(
@@ -135,8 +134,8 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
                   iconSize: 80,
                   onPressed: () async {
                     guardarPreferencias();
-                    print(await ObtenerPalabras ().obtenerPalabra(Filenum.cinco));
-                    }, // pasar de pantalla
+                    print(await ObtenerPalabras.obtenerPalabra(Filenum.cinco));
+                  }, // pasar de pantalla
                 ),
               ),
             ],

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:provider/provider.dart';
 
-import '../models/estadosJuego.dart';
-import '../models/letter.dart';
+import '../modelos/estadosJuego.dart';
+import '../modelos/letter.dart';
 
 import 'animacionCeldas.dart';
 

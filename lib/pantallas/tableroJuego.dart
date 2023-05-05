@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:wordless/models/estadosJuego.dart';
+import 'package:wordless/modelos/estadosJuego.dart';
 
-import '../components/home.dart';
+import '../componentes/home.dart';
 
 Future main() async {
   runApp(MultiProvider(

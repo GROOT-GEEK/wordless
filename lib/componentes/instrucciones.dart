@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/letter.dart';
+import '../modelos/letter.dart';
 import 'animacionFilas.dart';
 
 Widget exampleRow(String word, int position, LetterState state) {

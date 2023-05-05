@@ -11,26 +11,27 @@ enum Filenum {
   final String path;
   final num value;
 }
-Future<String> cargaFichero(Filenum p) async {
-  return await rootBundle.loadString('assets/${p.path}');
-}
+
 class ObtenerPalabras {
 
-
-  Future<String> obtenerPalabra(Filenum p) async{
+  static Future<String> obtenerPalabra(Filenum p) async{
     Random random = Random();
-    String palabras = await cargaFichero(p);
+    String palabras = await _cargaFichero(p);
     var lista = palabras.split('\r\n');
     int randomNumber = random.nextInt(lista.length);
-    return quitarTildes(lista[randomNumber]);
+    return _quitarTildes(lista[randomNumber]);
   }
 
-  String quitarTildes(String src){
+  static String _quitarTildes(String src){
     src = src.replaceAll(RegExp(r'á'), 'a');
     src = src.replaceAll(RegExp(r'é'), 'e');
     src = src.replaceAll(RegExp(r'í'), 'i');
     src = src.replaceAll(RegExp(r'ó'), 'o');
     src = src.replaceAll(RegExp(r'ú'), 'u');
     return src;
+  }
+
+  static Future<String> _cargaFichero(Filenum p) async {
+    return await rootBundle.loadString('assets/${p.path}');
   }
 }
